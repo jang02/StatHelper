@@ -52,32 +52,10 @@ namespace StatHelper.ViewModels
                 return;
             }
         }
-
-        private BitmapImage _image;
-        public BitmapImage Image
-        {
-            get
-            {
-                return _image;
-            }
-            set
-            {
-                _image = value;
-                OnPropertyChanged(nameof(Image));
-            }
-        }
-
-
         public StatSummaryViewModel(ItemService itemService)
         {
             _items = itemService.Items;
             _items.CollectionChanged += new NotifyCollectionChangedEventHandler(CollectionChangedMethod);
-
-            BitmapImage bmi = new BitmapImage();
-            bmi.BeginInit();
-            bmi.UriSource = new Uri("pack://application:,,,/StatHelper;component/Images/image.png");
-            bmi.EndInit();
-            _image = bmi;
 
         }
 
