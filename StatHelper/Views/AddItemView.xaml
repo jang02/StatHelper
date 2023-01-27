@@ -1,0 +1,64 @@
+﻿<Border x:Class="StatHelper.Views.AddItemView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Margin="8" BorderThickness="0" CornerRadius="20" Background="#262b36">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Style="{StaticResource HeaderText}" Grid.Row="0">Add Item</TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" HorizontalAlignment="Right">Select Set/Familiar</Label>
+                <ComboBox Grid.Column="1" HorizontalAlignment="Left" MaxHeight="45" Width="150" SelectedItem="{Binding SelectedOption}" ItemsSource="{Binding SelectableOptions}">
+
+                </ComboBox>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Column="0" HorizontalAlignment="Right">Select Gear Piece</Label>
+                <ComboBox Grid.Column="1" HorizontalAlignment="Left" MaxHeight="45" Width="150" IsEnabled="{Binding IsSelectItemEnabled}" SelectedItem="{Binding SelectedItemOption}" ItemsSource="{Binding ItemOptions}">
+
+                </ComboBox>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Right" Grid.Column="0">Attack:</Label>
+                <TextBox HorizontalAlignment="Left" Grid.Column="1" IsEnabled="{Binding IsAttackEnabled}" Text="{Binding Attack,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Label HorizontalAlignment="Right" Grid.Column="0">Crit Dmg:</Label>
+                <TextBox HorizontalAlignment="Left" Grid.Column="1" IsEnabled="{Binding IsCritDmgEnabled}" Text="{Binding CritDmg,UpdateSourceTrigger=PropertyChanged}"></TextBox>
+            </Grid>
+            <Button HorizontalAlignment="Center" Command="{Binding AddCommand}" Grid.Row="4">
+                Add
+            </Button>
+        </Grid>
+    </Grid>
+</Border>
