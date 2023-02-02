@@ -6,8 +6,10 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Linq;
+using System.Security.Authentication.ExtendedProtection;
 using System.Threading.Tasks;
 using System.Windows;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace StatHelper
 {
@@ -16,20 +18,33 @@ namespace StatHelper
     /// </summary>
     public partial class App : Application
     {
+        private ServiceProvider _serviceProvider;
+        private MainWindow _mainWindow;
+
+        public App()
+        {
+            ServiceCollection services = new ServiceCollection();
+
+            services.AddSingleton<ItemService>();
+            services.AddTransient<ItemsListView>();
+            services.AddTransient<ItemListViewModel>();
+            services.AddTransient<StatSummaryView>();
+            services.AddTransient<StatSummaryViewModel>();
+            services.AddTransient<AddItemView>();
+            services.AddTransient<AddItemViewModel>();
+            services.AddTransient<MainWindow>();
+            services.AddTransient<MainViewModel>();
+
+            _serviceProvider = services.BuildServiceProvider();
+
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
-            ItemService itemService = new ItemService();
-
-            MainWindow = new MainWindow()
-            {
-                DataContext = new MainViewModel(
-                    new ItemsListView(new ItemListViewModel(itemService)),
-                    new StatSummaryView(new StatSummaryViewModel(itemService)),
-                    new AddItemView(new AddItemViewModel(itemService))
-                    )
-            };
-            MainWindow.Show();
             base.OnStartup(e);
+
+            _mainWindow = _serviceProvider.GetRequiredService<MainWindow>();
+            _mainWindow.Show();
         }
     }
 }
