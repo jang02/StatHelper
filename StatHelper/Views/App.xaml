@@ -658,9 +658,9 @@
         <Color x:Key="GlyphMouseOver">#2a303c</Color>
 
         <!--Border colors-->
-        <Color x:Key="BorderLightColor">Transparent</Color>
-        <Color x:Key="BorderMediumColor">Transparent</Color>
-        <Color x:Key="BorderDarkColor">Transparent</Color>
+        <Color x:Key="BorderLightColor">#191d24</Color>
+        <Color x:Key="BorderMediumColor">#191d24</Color>
+        <Color x:Key="BorderDarkColor">#191d24</Color>
         <Color x:Key="PressedBorderLightColor">#262b36</Color>
         <Color x:Key="PressedBorderDarkColor">#262b36</Color>
 

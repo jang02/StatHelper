@@ -9,7 +9,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBlock Style="{StaticResource HeaderText}" Grid.Row="0">Items</TextBlock>
-        <DataGrid Margin="5, 20" Grid.Row="1" x:Name="Items" AutoGenerateColumns="False" ItemsSource="{Binding Items}" CanUserAddRows="false" ColumnWidth="*">
+        <DataGrid Margin="5, 20" HeadersVisibility="Column" EnableColumnVirtualization="False" VerticalGridLinesBrush="#191d24" HorizontalGridLinesBrush="#191d24" Grid.Row="1" x:Name="Items" AutoGenerateColumns="False" ItemsSource="{Binding Items}" CanUserAddRows="false" ColumnWidth="*">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" IsReadOnly="True" Binding="{Binding Name}"/>
                 <DataGridTextColumn Header="Type" IsReadOnly="True" Binding="{Binding Type}"/>
