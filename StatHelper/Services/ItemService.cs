@@ -76,11 +76,15 @@ namespace StatHelper.Services
 
         private void CollectionChangedMethod(object sender, NotifyCollectionChangedEventArgs e)
         {
+            SaveItems();
+            if (e.NewItems == null)
+            {
+                return;
+            }
             foreach (ItemViewModel item in e.NewItems)
             {
                 item.PropertyChanged += Item_PropertyChanged;
             }
-            SaveItems();
         }
 
         private void Item_PropertyChanged(object? sender, PropertyChangedEventArgs e)

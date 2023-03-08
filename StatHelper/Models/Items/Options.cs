@@ -8,13 +8,15 @@ namespace StatHelper.Models.Items
 {
     public enum Options
     {
-        AOV,
+        AoV,
         HH,
         LF,
         VS,
         BS,
         TF,
         VP,
-        FAMILIAR
+        Familiar,
+        Pet,
+        Artifact
     }
 }

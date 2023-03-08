@@ -11,10 +11,10 @@ namespace StatHelper.Models
     public sealed class Equipment : SmartEnum<Equipment>
     {
         //AOV Information
-        public static readonly Equipment AOVWeapon = new("Disorders Weapon", 0, Options.AOV, 1, ItemType.Weapon, 0, 1576);
-        public static readonly Equipment AOVArmor = new("Disorders Armor", 1, Options.AOV, 4, ItemType.Armor, 149, 571);
-        public static readonly Equipment AOVEarringsAndPendant = new ("Disorders Earrings/Pendant", 2, Options.AOV, 2, ItemType.Accessory, 306, 0);
-        public static readonly Equipment AOVRings = new ("Disorders Rings", 3, Options.AOV, 2, ItemType.Accessory, 181, 381);
+        public static readonly Equipment AOVWeapon = new("Disorders Weapon", 0, Options.AoV, 1, ItemType.Weapon, 0, 1576);
+        public static readonly Equipment AOVArmor = new("Disorders Armor", 1, Options.AoV, 4, ItemType.Armor, 149, 571);
+        public static readonly Equipment AOVEarringsAndPendant = new ("Disorders Earrings/Pendant", 2, Options.AoV, 2, ItemType.Accessory, 306, 0);
+        public static readonly Equipment AOVRings = new ("Disorders Rings", 3, Options.AoV, 2, ItemType.Accessory, 181, 381);
 
         //HH Information
         public static readonly Equipment HHWeapon = new ("Primacy Weapon", 10, Options.HH, 1, ItemType.Weapon, 0, 1576);
@@ -51,18 +51,33 @@ namespace StatHelper.Models
         public static readonly Equipment VPArmor = new ("Insidious Armor", 61, Options.VP, 4, ItemType.Armor, 850, 1650);
 
         //Familiar Information
-        public static readonly Equipment BSWeaponFam = new ("Lvl 76 Weapon Fam", 200, Options.FAMILIAR, 2, ItemType.Familiar, 1000, 500);
-        public static readonly Equipment BSTypeAFam = new ("Lvl 76 Type A Fam", 201, Options.FAMILIAR, 4, ItemType.Familiar, 0, 500);
-        public static readonly Equipment BSTypeCFam = new ("Lvl 76 Type C Fam", 202, Options.FAMILIAR, 4, ItemType.Familiar, 0, 700);
-        public static readonly Equipment VPWeaponFam = new ("Lvl 82 Weapon Fam", 203, Options.FAMILIAR, 2, ItemType.Familiar, 1200, 1500);
-        public static readonly Equipment VPTypeAFam = new ("Lvl 82 Type A Fam", 204, Options.FAMILIAR, 4, ItemType.Familiar, 0, 800);
-        public static readonly Equipment VPTypeCFam = new ("Lvl 82 Type C Fam", 205, Options.FAMILIAR, 4, ItemType.Familiar, 0, 910);
+        public static readonly Equipment BSWeaponFam = new ("Lvl 76 Weapon Fam", 200, Options.Familiar, 2, ItemType.Familiar, 1000, 500);
+        public static readonly Equipment BSTypeAFam = new ("Lvl 76 Type A Fam", 201, Options.Familiar, 4, ItemType.Familiar, 0, 500);
+        public static readonly Equipment BSTypeCFam = new ("Lvl 76 Type C Fam", 202, Options.Familiar, 4, ItemType.Familiar, 0, 700);
+        public static readonly Equipment VPWeaponFam = new ("Lvl 82 Weapon Fam", 203, Options.Familiar, 2, ItemType.Familiar, 1200, 1500);
+        public static readonly Equipment VPTypeAFam = new ("Lvl 82 Type A Fam", 204, Options.Familiar, 4, ItemType.Familiar, 0, 800);
+        public static readonly Equipment VPTypeCFam = new ("Lvl 82 Type C Fam", 205, Options.Familiar, 4, ItemType.Familiar, 0, 910);
+
+        //Pet Information
+        public static readonly Equipment PetCatherine = new("Catherine", 300, Options.Pet, 1, ItemType.Pet, 1420, 0);
+        public static readonly Equipment PetYorhaka = new("Yorhaka", 301, Options.Pet, 1, ItemType.Pet, 1420, 0);
+        public static readonly Equipment PetArua = new("Arua", 302, Options.Pet, 1, ItemType.Pet, 0, 2520);
+
+        //Pet Artifacts
+        public static readonly Equipment ArtifactAttackBlue = new("Blue Attack artifact", 400, Options.Artifact, 1, ItemType.Artifact, 400, 0);
+        public static readonly Equipment ArtifactCritDmgBlue = new("Blue CritDmg artifact", 401, Options.Artifact, 1, ItemType.Artifact, 0, 730);
+        public static readonly Equipment ArtifactAttackRed = new("Red Attack artifact", 402, Options.Artifact, 1, ItemType.Artifact, 400, 0);
+        public static readonly Equipment ArtifactCritDmgRed = new("Red CritDmg artifact", 403, Options.Artifact, 1, ItemType.Artifact, 0, 730);
+        public static readonly Equipment ArtifactEffect = new("Effect artifact", 403, Options.Artifact, 1, ItemType.Artifact, 0, 600);
 
         public ItemType ItemType { get; }
         public Options Option { get; }
         public int Limit { get; }
         public int MaxAttack { get; }
         public int MaxCritDmg { get; }
+
+        public static readonly int PetMaxAttack = 1420;
+        public static readonly int PetMaxCdmg = 2750;
 
         public Equipment(string name, int value, Options option, int limit, ItemType type, int maxAttack, int maxCdmg) : base(name, value)
         {

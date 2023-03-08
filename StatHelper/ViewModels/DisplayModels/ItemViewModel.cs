@@ -45,9 +45,50 @@ namespace StatHelper.ViewModels
             }
         }
         public string MaxCritDmg => _item.Equipment.MaxCritDmg.ToString();
-        public string MissingAttack => (_item.Equipment.MaxAttack - _item.Attack).ToString();
-        public string MissingCritDmg => (_item.Equipment.MaxCritDmg - _item.CritDmg).ToString();
-        public string MissingDmg => ((_item.Equipment.MaxAttack - _item.Attack) * 1.8 + (_item.Equipment.MaxCritDmg - _item.CritDmg)).ToString();
+        public string MissingAttack
+        {
+            get
+            {
+                if (_item.Equipment.ItemType == ItemType.Pet)
+                {
+                    if (_item.Equipment.MaxAttack == 0)
+                    {
+                        return "0";
+                    }
+                    return (Equipment.PetMaxAttack - _item.Attack).ToString();
+                }
+
+                return (_item.Equipment.MaxAttack - _item.Attack).ToString();
+            }
+        }
+        public string MissingCritDmg
+        {
+            get
+            {
+                if (_item.Equipment.ItemType == ItemType.Pet)
+                {
+                    if (_item.Equipment.MaxCritDmg == 0)
+                    {
+                        return "0";
+                    }
+                    return (Equipment.PetMaxCdmg - _item.CritDmg).ToString();
+                }
+
+                return (_item.Equipment.MaxCritDmg - _item.CritDmg).ToString();
+            }
+        }
+        public string MissingDmg
+        {
+            get
+            {
+                if (_item.Equipment.ItemType == ItemType.Pet)
+                {
+                    return ((_item.Equipment.MaxAttack == 0 ? 0 : Equipment.PetMaxAttack - _item.Attack) * 1.8 + (_item.Equipment.MaxCritDmg == 0 ? 0 : Equipment.PetMaxCdmg - _item.CritDmg)).ToString();
+                }
+
+                return ((_item.Equipment.MaxAttack - _item.Attack) * 1.8 + (_item.Equipment.MaxCritDmg - _item.CritDmg)).ToString();
+            }
+        }
 
 
 

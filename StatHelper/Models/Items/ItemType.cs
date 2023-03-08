@@ -11,6 +11,8 @@ namespace StatHelper.Models
         Armor,
         Weapon,
         Accessory,
-        Familiar
+        Familiar,
+        Pet,
+        Artifact
     }
 }

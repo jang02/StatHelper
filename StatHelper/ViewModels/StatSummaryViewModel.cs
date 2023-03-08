@@ -17,13 +17,13 @@ namespace StatHelper.ViewModels
     public class StatSummaryViewModel : ViewModelBase
     {
 
-        private readonly ObservableCollection<ItemViewModel> _items;
+        private readonly ItemService _itemService;
         
         public int MissingAttack
         {
             get
             {
-                return _items.Sum(item => Int32.Parse(item.MissingAttack));
+                return _itemService.Items.Sum(item => Int32.Parse(item.MissingAttack));
             }
             set
             {
@@ -34,7 +34,7 @@ namespace StatHelper.ViewModels
         {
             get
             {
-                return _items.Sum(item => Int32.Parse(item.MissingCritDmg));
+                return _itemService.Items.Sum(item => Int32.Parse(item.MissingCritDmg));
             }
             set
             {
@@ -45,7 +45,7 @@ namespace StatHelper.ViewModels
         {
             get
             {
-                return _items.Sum(item => Double.Parse(item.MissingDmg));
+                return _itemService.Items.Sum(item => Double.Parse(item.MissingDmg));
             }
             set
             {
@@ -54,8 +54,13 @@ namespace StatHelper.ViewModels
         }
         public StatSummaryViewModel(ItemService itemService)
         {
-            _items = itemService.Items;
-            _items.CollectionChanged += new NotifyCollectionChangedEventHandler(CollectionChangedMethod);
+            _itemService = itemService;
+            itemService.Items.CollectionChanged += new NotifyCollectionChangedEventHandler(CollectionChangedMethod);
+
+            foreach (ItemViewModel item in _itemService.Items)
+            {
+                item.PropertyChanged += Item_PropertyChanged;
+            }
 
         }
 

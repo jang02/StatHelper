@@ -36,7 +36,7 @@ namespace StatHelper.ViewModels
         }
 
         //select actual piece
-        public IEnumerable<Equipment> ItemOptions { get; private set; } = Equipment.List.Where(s => s.Option == Options.AOV);
+        public IEnumerable<Equipment> ItemOptions { get; private set; } = Equipment.List.Where(s => s.Option == Options.AoV);
         private Equipment _selectedItemOption;
         public Equipment SelectedItemOption
         {
