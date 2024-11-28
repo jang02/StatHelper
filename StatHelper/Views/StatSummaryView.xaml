@@ -53,7 +53,6 @@
                 </Label>
                 <TextBox IsEnabled="False" HorizontalAlignment="Left" Grid.Column="1" Text="{Binding MissingDmg}"></TextBox>
             </Grid>
-            <Image Grid.Column="1" Grid.Row="4" Source="{Binding Image}"/>
 
         </Grid>
     </Grid>

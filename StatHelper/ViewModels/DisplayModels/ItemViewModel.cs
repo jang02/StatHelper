@@ -1,5 +1,4 @@
 ﻿using StatHelper.Models;
-using System.Collections.Generic;
 using System.ComponentModel;
 
 namespace StatHelper.ViewModels
